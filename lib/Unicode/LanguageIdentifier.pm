@@ -2,30 +2,29 @@ grammar Unicode::LanguageIdentifier {
     token TOP {
         | root
         | [
-            | <unicode-language-subtag>
-               [ <.sep> <unicode-script-subtag> ]?
-            | <unicode-script-subtag>
+            | <language-subtag> [ <.sep> <script-subtag> ]?
+            | <script-subtag>
         ]
-        [ <.sep> <unicode-region-subtag>  ]?
-        [ <.sep> <unicode-variant-subtag> ]*
+        [ <.sep> <region-subtag>  ]?
+        [ <.sep> <variant-subtag> ]*
     }
-    token unicode-language-subtag {
+    token language-subtag {
         [
             | <.alpha> ** 2..3
             | <.alpha> ** 5..8
         ] <.anchor>
     }
-    token unicode-script-subtag {
+    token script-subtag {
         <.alpha> ** 4
         <.anchor>
     }
-    token unicode-region-subtag {
+    token region-subtag {
         [
             | <.alpha> ** 2
             | <.digit> ** 3
         ] <.anchor>
     }
-    token unicode-variant-subtag {
+    token variant-subtag {
         [
             | <.alphanum> ** 5..8
             | <.digit> <.alphanum> ** 3
@@ -38,10 +37,10 @@ grammar Unicode::LanguageIdentifier {
         <[ 0..9 ]>
     }
     token alpha {
-        <[ A..Z a..z ]>
+        :i <[ a..z ]>
     }
     token alphanum {
-        <[ 0..9 A..Z a..z ]>
+        <.digit> | <.alpha>
     }
     token anchor {
         <before <.sep> | $ >
