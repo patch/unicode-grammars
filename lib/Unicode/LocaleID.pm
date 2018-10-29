@@ -43,8 +43,7 @@ grammar Unicode::LocaleID is Unicode::LanguageID {
         <.alphanum> <.alpha>
     }
     token type {
-        <.alphanum> ** 3..8
-        [ <.sep> <.alphanum> ** 3..8 ]*
+        [ <.alphanum> ** 3..8 ]+ %% <.sep>
     }
     token attribute {
         <.alphanum> ** 3..8
@@ -56,8 +55,7 @@ grammar Unicode::LocaleID is Unicode::LanguageID {
         <.alphanum> ** 1..4
     }
     token measure-unit {
-        <.alphanum> ** 3..8
-        [ <.sep> <.alphanum> ** 3..8 ]*
+        [ <.alphanum> ** 3..8 ]+ %% <.sep>
     }
     token tlang {
         <language-subtag>
