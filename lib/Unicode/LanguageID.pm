@@ -1,5 +1,8 @@
-grammar Unicode::LanguageIdentifier {
+grammar Unicode::LanguageID {
     token TOP {
+        <language-id>
+    }
+    token language-id {
         | root
         | [
             | <language-subtag> [ <.sep> <script-subtag> ]?
