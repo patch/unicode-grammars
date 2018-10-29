@@ -33,7 +33,7 @@ grammar Unicode::LocaleID is Unicode::LanguageID {
         [ <.sep> <.alphanum> ** 1..8 ]*
     }
     token other-extensions {
-        [ :i <[ 0..9 a..z ] - [ t u x ]> ]
+        <!before :i <[ t u x ]> > <.alphanum>
         [ <.sep> <.alphanum> ** 2..8 ]*
     }
     token keyword {
